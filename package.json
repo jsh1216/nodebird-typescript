@@ -1,0 +1,48 @@
+{
+  "name": "NodeAuction",
+  "version": "0.0.1",
+  "description": "노드 경매 시스템 ",
+  "main": "lib/app",
+  "author": "JSH",
+  "license": "MIT",
+  "scripts": {
+    "debug": "ts-node .",
+    "build": "tsc --build --force",
+    "start": "nodemon lib/app"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.8",
+    "bluebird": "^3.7.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.4",
+    "reflect-metadata": "^0.1.13",
+    "see": "^0.0.0",
+    "sequelize": "^5.21.3",
+    "sequelize-typescript": "0.6",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@musma/eslint-config": "^0.0.12",
+    "@types/bcrypt": "^3.0.0",
+    "@types/bluebird": "^3.5.29",
+    "@types/connect-flash": "^0.0.35",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express-session": "^1.15.16",
+    "@types/morgan": "^1.7.37",
+    "@types/multer": "^1.4.0",
+    "@types/mysql2": "types/mysql",
+    "@types/passport-local": "^1.0.33",
+    "@types/sequelize": "^4.28.8",
+    "nodemon": "^2.0.2",
+    "typescript": "^3.7.5"
+  }
+}
