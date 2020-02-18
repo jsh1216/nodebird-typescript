@@ -10,7 +10,7 @@ import sequelize from './models/index'
 import passportConfig from './passport'
 import { Promise as Bluebird } from 'bluebird'
 
-const app = express()
+const app: express.Express = express()
 sequelize.sync()
 dotenv.config()
 passportConfig(passport)

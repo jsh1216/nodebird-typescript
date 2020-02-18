@@ -5,17 +5,17 @@ import passport from 'passport'
 // import { Post } from '../models/Post'
 import { User } from '../models/User'
 
-const router = express.Router()
+const router: express.Router = express.Router()
 
 router.post('/join', isNotLoggedIn, async (req, res, next) => {
   const { email, nick, password } = req.body
   try {
-    const exUser = await User.findOne({ where: { email } })
+    const exUser: any = await User.findOne({ where: { email } })
     if (exUser) {
       req.flash('joinError', '이미 가입된 이메일입니다.')
       return res.redirect('/join')
     }
-    const hash = await bcrypt.hash(password, 12)
+    const hash: string = await bcrypt.hash(password, 12)
     await User.create({
       email,
       nick,

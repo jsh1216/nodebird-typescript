@@ -3,7 +3,7 @@ import { isLoggedIn } from './middlewares'
 
 import { User } from '../models/User'
 
-const router = express.Router()
+const router: express.Router = express.Router()
 
 router.use(
   (req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -14,7 +14,7 @@ router.use(
 
 router.post('/:id/follow', isLoggedIn, async (req, res, next) => {
   try {
-    const user = await User.findOne({
+    const user: any = await User.findOne({
       where: { userId: res.locals.user.userId },
     })
     // console.log(Object.getPrototypeOf(user))

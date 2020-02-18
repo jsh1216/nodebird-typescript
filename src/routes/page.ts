@@ -3,7 +3,7 @@ import { isLoggedIn, isNotLoggedIn } from './middlewares'
 import { Post } from '../models/Post'
 import { User } from '../models/User'
 
-const router = express.Router()
+const router: express.Router = express.Router()
 
 router.use(
   (req: express.Request, res: express.Response, next: express.NextFunction) => {

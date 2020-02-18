@@ -32,7 +32,7 @@ const upload = multer({
       cb(null, 'src/uploads/')
     },
     filename(req, file, cb) {
-      const ext = path.extname(file.originalname)
+      const ext: string = path.extname(file.originalname)
       cb(null, path.basename(file.originalname, ext) + Date.now() + ext)
     },
   }),
