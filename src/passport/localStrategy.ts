@@ -1,8 +1,7 @@
 import passportLocal from 'passport-local'
-import bcrypt from 'bcrypt'
 import Passport from 'passport'
-
-import { UserModel } from '../models/UserModel'
+import { User } from '../models/User'
+import bcrypt from 'bcrypt'
 
 const LocalStrategy = passportLocal.Strategy
 
@@ -15,7 +14,7 @@ export default (passport: Passport.Authenticator) => {
       },
       async (email, password, done) => {
         try {
-          const exUser = await UserModel.findOne({ where: { email } })
+          const exUser = await User.findOne({ where: { email } })
           if (exUser) {
             const result = await bcrypt.compare(password, exUser.password ?? '')
             if (result) {

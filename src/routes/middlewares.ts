@@ -8,8 +8,7 @@ export const isLoggedIn = (
   if (req.isAuthenticated()) {
     next()
   } else {
-    req.flash('loginError', '로그인이 필요합니다')
-    res.redirect('/')
+    res.status(403).send('로그인 필요')
   }
 }
 

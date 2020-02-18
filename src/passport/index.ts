@@ -1,17 +1,48 @@
 import local from './localStrategy'
-import { UserModel } from '../models/UserModel'
+import kakao from './kakaoStrategy'
 import Passport from 'passport'
+import { User } from '../models/User'
 
 export default (passport: Passport.Authenticator) => {
   passport.serializeUser((user: any, done: any) => {
-    done(null, user.id)
+    done(null, user.userId)
   })
 
-  passport.deserializeUser((id: any, done: any) => {
-    UserModel.findOne({ where: { id } })
-      .then(user => done(null, user))
-      .catch(err => done(err))
+  passport.deserializeUser(async (userId: any, done: any) => {
+    try {
+      const user = await User.findOne({
+        include: [
+          {
+            as: 'followers',
+            attributes: ['userId', 'nick'],
+            model: User,
+          },
+          {
+            as: 'followings',
+            attributes: ['userId', 'nick'],
+            model: User,
+          },
+          {
+            as: 'Likes',
+            attributes: ['userId', 'nick'],
+            model: User,
+          },
+          {
+            as: 'Likers',
+            attributes: ['userId', 'nick'],
+            model: User,
+          },
+        ],
+        where: { userId },
+      })
+      console.log(user)
+      done(null, user)
+    } catch (error) {
+      console.error(error)
+      done(error)
+    }
   })
 
   local(passport)
+  kakao(passport)
 }
